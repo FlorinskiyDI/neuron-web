@@ -1,11 +1,18 @@
 import { enableProdMode, importProvidersFrom, ErrorHandler } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { routes } from './app/app-routing.module';
 import { GlobalErrorHandler } from './app/app-core/errors/error.handler.service';
-import { AppComponent } from './app/app.component';
 
+// app
+import { AppComponent } from './app/app.component';
+import { AppRoutes } from './app/app-routing.module';
 import { environment } from './environments/environment';
+
+// ngxs/state
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { AppState } from './app/app-state/app.state';
 
 if (environment.production) {
   enableProdMode();
@@ -13,7 +20,11 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(RouterModule.forRoot(routes)),
+    importProvidersFrom(
+      RouterModule.forRoot(AppRoutes),
+      NgxsModule.forRoot([...AppState], { developmentMode: !environment.production }),
+      NgxsReduxDevtoolsPluginModule.forRoot(),
+      NgxsLoggerPluginModule.forRoot({ disabled: environment.production })),
     { 
       provide: 'LOGS',
       useValue: true
@@ -21,7 +32,8 @@ bootstrapApplication(AppComponent, {
     {
       provide: ErrorHandler,
       useClass: GlobalErrorHandler
-    }
+    },
+    
   ]
 })
   .catch(err => console.error(err));

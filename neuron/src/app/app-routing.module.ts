@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [
+export const AppRoutes: Routes = [
   {
     path: '',
     loadComponent: () => import('./user/user.component').then(m => m.UserComponent)
