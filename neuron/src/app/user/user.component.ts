@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
+  standalone: true,
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.sass'],
-  standalone: true,
   imports: [MatCardModule]
 })
 export class UserComponent implements OnInit {
@@ -15,4 +15,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public test() {
+    throw new Error('Something bad happened');
+  }
 }

@@ -2,13 +2,21 @@ import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
   standalone: true,
-  imports: [MatToolbarModule, RouterModule]
+  imports: [
+    MatToolbarModule,
+    RouterModule,
+  ],
+  providers: [
+    // AppCoreProviders
+  ]
 })
+
 export class AppComponent {
   title = 'angular-standalone-components-example';
 }
