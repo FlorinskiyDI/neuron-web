@@ -1,0 +1,66 @@
+
+.cmp--layout-welcome{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: #ebebeb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box--list{
+    width: 180px;
+}
+
+.box--item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.box--control {
+    width: 80px;
+    height: 80px;
+    line-height: 200px;
+    background: transparent;
+    box-shadow: 2px 2px 6px 0 rgb(0 0 0 / 13%), -3px -3px 5px 0 rgb(255 255 255 / 55%);
+    border-radius: 13px;
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box--control:hover {
+    cursor: pointer;
+}
+
+.box--control mat-icon {
+    font-size: 32px;
+    height: 32px;
+    width: 32px;
+    color: #666;
+    transition: color 0.3s;
+}
+
+.box--control:hover mat-icon {
+    color: #dbab5e;
+}
+
+.box--text {
+    font-size: 13px;
+    text-align: center;
+    font-weight: 400;
+}
+.box--text .text-part-1 {
+    color: #888;
+    line-height: 20px;
+}
+.box--text .text-part-2 {
+    color: #dbab5e;
+}
