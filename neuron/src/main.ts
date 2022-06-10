@@ -5,7 +5,7 @@ import { GlobalErrorHandler } from './app/app-core/errors/error.handler.service'
 
 // app
 import { AppComponent } from './app/app.component';
-import { AppRoutes } from './app/app-routing.module';
+import { AppRoutes } from './app/app.routes';
 import { environment } from './environments/environment';
 
 // ngxs/state

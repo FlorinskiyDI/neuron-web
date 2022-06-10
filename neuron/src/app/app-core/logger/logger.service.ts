@@ -122,7 +122,6 @@ export class LogEntry {
             ret = '';
             // Build comma-delimited string
             for (const item of params) {
-                debugger
                 ret += JSON.stringify(item, Object.getOwnPropertyNames(item)) + ',';
             }
         }
