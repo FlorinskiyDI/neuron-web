@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserManager, User, UserManagerSettings } from 'oidc-client';
-import { Constants } from '../app.constant';
 import { Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +16,14 @@ export class AuthService {
 
   private get idpSettings() : UserManagerSettings {
     return {
-      authority: Constants.idpAuthority,
-      client_id: Constants.clientId,
-      redirect_uri: `${Constants.clientRoot}/signin-callback`,
-      scope: "openid profile",
-      response_type: "code",
-      post_logout_redirect_uri: `${Constants.clientRoot}/signout-callback`,
+      authority: environment.host_authService,
+      client_id: environment.auth_clientId,
+      redirect_uri: `${environment.auth_clientRoot}/signin-callback`,
+      scope: environment.auth_scope,
+      response_type: environment.auth_responseType,
+      post_logout_redirect_uri: `${environment.auth_clientRoot}/signout-callback`,
       automaticSilentRenew: true,
-      silent_redirect_uri: `${Constants.clientRoot}/assets/silent-callback.html`
+      silent_redirect_uri: `${environment.auth_clientRoot}/assets/silent-callback.html`
     }
   }
 
