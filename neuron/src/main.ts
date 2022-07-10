@@ -1,18 +1,20 @@
+// main
 import { enableProdMode, importProvidersFrom, ErrorHandler } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { GlobalErrorHandler } from './app/app-core/errors/error.handler.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 // app
 import { AppComponent } from './app/app.component';
 import { AppRoutes } from './app/app.routes';
 import { environment } from './environments/environment';
+import { GlobalErrorHandler } from './app/app-core/errors/global-error.handler';
 
-// ngxs/state
-import { NgxsModule } from '@ngxs/store';
-import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
-import { AppState } from './app/app-state/app.state';
+// ngrx - app state
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { metaReducers, reducers } from './app/app-state';
 
 if (environment.production) {
   enableProdMode();
@@ -21,11 +23,22 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(
+      BrowserAnimationsModule,
+      BrowserModule,
       RouterModule.forRoot(AppRoutes),
-      NgxsModule.forRoot([...AppState], { developmentMode: !environment.production }),
-      NgxsReduxDevtoolsPluginModule.forRoot(),
-      NgxsLoggerPluginModule.forRoot({ disabled: environment.production })),
-    { 
+      StoreModule.forRoot(
+        reducers,
+        {
+          metaReducers,
+          runtimeChecks: {
+            strictStateImmutability: true,
+            strictActionImmutability: true
+          }
+        }
+      ),      
+      StoreDevtoolsModule.instrument({ logOnly: environment.production }),
+    ),
+    {
       provide: 'LOGS',
       useValue: true
     },
@@ -36,4 +49,4 @@ bootstrapApplication(AppComponent, {
     
   ]
 })
-  .catch(err => console.error(err));
+.catch(err => console.error(err));

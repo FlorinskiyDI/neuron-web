@@ -23,7 +23,7 @@ export class AuthGuardService implements CanActivate {
   }
 
   private redirectToUnauthorized() {
-    this._router.navigate(['/login']);
+    this._router.navigate(['/identity/login']);
     return false;
   }
 }

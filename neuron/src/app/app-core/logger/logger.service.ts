@@ -12,10 +12,7 @@ export enum LogLevel {
     Off = 6
 }
 
-@Injectable({
-    providedIn: 'root'
-  })
-
+@Injectable({ providedIn: 'root' })
 export class LoggerService {
 
     level: LogLevel = LogLevel.All;

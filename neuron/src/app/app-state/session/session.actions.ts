@@ -1,20 +1,34 @@
+import { Action } from '@ngrx/store';
 import { ISessionStateModel } from './session.model'
 import { IStateBase } from '../app.model'
 
-export class LoginUser {
-    static readonly type = '[Session] login user';
+export enum SessionActionsType {
+    loginUser = '[Session] login user',
+    loginUserSuccess = '[Session] login user success',
+    loginUserFailed = '[Session] login user failed',
+    logoutUser = '[Session] logout user',
 }
 
-export class LoginUserSuccess {
-    static readonly type = '[Session] login user success';
-    constructor(public payload: ISessionStateModel) {}
+export class LoginUserAction implements Action {
+    readonly type = SessionActionsType.loginUser;
 }
 
-export class LoginUserFailed {
-    static readonly type = '[Session] login user failed';
-    constructor(public payload: IStateBase) {}
+export class LoginUserSuccessAction implements Action {
+    readonly type = SessionActionsType.loginUserSuccess;
+    constructor(public payload: ISessionStateModel) { }
 }
 
-export class LogoutUser {
-    static readonly type = '[Session] logout user';
+export class LoginUserFailedAction implements Action {
+    readonly type = SessionActionsType.loginUserFailed;
+    constructor(public payload: IStateBase) { }
 }
+
+export class LogoutUserAction implements Action {
+    readonly type = SessionActionsType.logoutUser;
+}
+
+export type SessionActions =
+    LoginUserAction |
+    LoginUserSuccessAction |
+    LoginUserFailedAction |
+    LogoutUserAction;

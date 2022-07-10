@@ -1,0 +1,32 @@
+<div class="flex">
+  <mat-accordion class="example-headers-align" multi>
+
+    <mat-expansion-panel *ngFor="let subDay of data">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ subDay.title }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ subDay.description }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          title 2
+        </mat-panel-title>
+        <mat-panel-description>
+          Description 2
+        </mat-panel-description>
+      </mat-expansion-panel-header>  
+    </mat-expansion-panel>
+
+  </mat-accordion>
+  <div class="dismiss">
+    <button mat-icon-button (click)="snackBarRef.dismiss()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>

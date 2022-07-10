@@ -3,12 +3,13 @@ import { MatCardModule } from '@angular/material/card';
 
 @Component({
   standalone: true,
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.sass'],
+  selector: 'user-hub',
+  templateUrl: './user-hub.component.html',
+  styleUrls: ['./user-hub.component.scss'],
   imports: [MatCardModule]
 })
-export class UserComponent implements OnInit {
+
+export class UserHubComponent implements OnInit {
 
   constructor() { }
 
