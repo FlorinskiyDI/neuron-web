@@ -13,6 +13,9 @@ export const environment = {
   auth_clientRoot: "", // HTPP!!!
   auth_scope: "",
   auth_responseType: "",
-  auth_automaticSilentRenew: true
+  auth_automaticSilentRenew: true,
+  
+  // redux option
+  redux_log: false
 
 };

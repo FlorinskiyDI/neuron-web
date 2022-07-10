@@ -13,6 +13,9 @@ export const environment = {
   auth_clientRoot: "http://localhost:4200", // temp config of HTPP!!!
   auth_scope: "openid profile",
   auth_responseType: "code",
-  auth_automaticSilentRenew: true
+  auth_automaticSilentRenew: true,
+
+  // redux option
+  redux_log: false
 
 };
