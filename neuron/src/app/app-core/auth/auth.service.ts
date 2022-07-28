@@ -18,10 +18,10 @@ export class AuthService {
     return {
       authority: environment.host_authService,
       client_id: environment.auth_clientId,
-      redirect_uri: `${environment.auth_clientRoot}/signin-callback`,
+      redirect_uri: `${environment.auth_clientRoot}/identity/signin-callback`,
       scope: environment.auth_scope,
       response_type: environment.auth_responseType,
-      post_logout_redirect_uri: `${environment.auth_clientRoot}/signout-callback`,
+      post_logout_redirect_uri: `${environment.auth_clientRoot}/identity/signout-callback`,
       automaticSilentRenew: true,
       silent_redirect_uri: `${environment.auth_clientRoot}/assets/silent-callback.html`
     }
