@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserManager, User, UserManagerSettings } from 'oidc-client';
+import { UserManager, User, UserManagerSettings, WebStorageStateStore } from 'oidc-client';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -23,7 +23,8 @@ export class AuthService {
       response_type: environment.auth_responseType,
       post_logout_redirect_uri: `${environment.auth_clientRoot}/identity/signout-callback`,
       automaticSilentRenew: true,
-      silent_redirect_uri: `${environment.auth_clientRoot}/assets/silent-callback.html`
+      silent_redirect_uri: `${environment.auth_clientRoot}/assets/silent-callback.html`,
+      userStore: new WebStorageStateStore({ store: window.localStorage })
     }
   }
 
