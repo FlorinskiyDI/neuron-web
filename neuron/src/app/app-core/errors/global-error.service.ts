@@ -10,6 +10,7 @@ export class GlobalErrorService {
   
     globalErrorPush(data: any) {
       if (!data) { return }
+      // console.log(JSON.stringify(data));
       this._globalErrorSubject$.next(data)  
     }
 

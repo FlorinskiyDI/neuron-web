@@ -18,8 +18,31 @@ export const AppRoutes: Routes = [
     ]
   },
   {
-    path: '',
+    path: 'app',
     loadComponent: () => import('./layout-main/layout-main.component').then(m => m.LayoutMainComponent),
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    children: [
+      {
+        path: 'users',
+        loadComponent: () => import('./module-user/user-layout-main/user-layout-main.component').then(m => m.UserLayoutMain),
+        children: [
+          {
+            path: 'new',
+            loadComponent: () => import('./module-user/user-hub.component').then(m => m.UserHubComponent),
+          }
+        ]
+      },
+      {
+        path: 'users',
+        loadComponent: () => import('./module-user/user-layout-sidebar/user-layout-sidebar.component').then(m => m.UserLayoutSidebar),
+        outlet: "sidebar",
+        children: [
+          {
+            path: 'new',
+            loadComponent: () => import('./module-user/user-hub.component').then(m => m.UserHubComponent),
+          }
+        ]
+      }
+    ] 
   },
 ];

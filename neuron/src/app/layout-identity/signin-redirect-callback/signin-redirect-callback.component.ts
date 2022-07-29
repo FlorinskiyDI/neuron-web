@@ -29,7 +29,7 @@ export class SigninRedirectCallbackComponent implements OnInit {
         } as ISessionStateModel;
 
         this.store$.dispatch(new LoginUserSuccessAction(sessionStateModel));
-        this._router.navigate(['/'], { replaceUrl: true });
+        this._router.navigate(['/app'], { replaceUrl: true });
       })
   }
 }

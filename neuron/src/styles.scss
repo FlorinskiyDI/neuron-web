@@ -1,4 +1,8 @@
 /* reset default padding and marging */
+html, body, app-root {
+    height: 100%;
+    display: block;
+}
 body {
     padding: 0px;
     margin: 0px;
